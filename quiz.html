@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="main.css">
+		<title>Quiz</title>
+		<script type="text/javascript">
+			function fontChoice(bID){
+				value = bID;
+				console.log(value);
+				var images = [
+					'winter.jpg',
+					'spring.jpg',
+					'summer.jpg',
+					'fall.jpg'];
+				text = '';
+
+				switch(value) {
+					case 0:
+						text = "winter princess";
+						break;
+					case 1:
+						text = "way gardens";
+						break;
+					case 2:
+						text = "summer love";
+						break;
+					case 3:
+						text = "autumn deco";
+						break;
+					default: 
+						"no font for you"
+				}
+				document.getElementById("font").innerHTML = text;
+				document.getElementById("season").src = images[value];
+			}
+		</script>
+	</head>
+	<body>
+
+		<div id="main">
+			<div id="questions">
+				<br>
+				<h1>which font are you?</h1>
+				<h4>pick a season below</h4>
+				<button class="button" onclick="fontChoice(0)">winter</button>
+				<br>
+				<button class="button" onclick="fontChoice(1)">spring</button>
+				<br>
+				<button class="button" onclick="fontChoice(2)">summer</button>
+				<br>
+				<button class="button" onclick="fontChoice(3)">fall</button>
+				<br>			
+			<div id="results">
+				<h1>results</h1>
+				<h3 id="answer"></h3>
+				<h3 id="font"></h3>
+				<img id="season" src(unknown)> 
+			</div>
+			</div>
+		</div>
+	</body>
+</html>
