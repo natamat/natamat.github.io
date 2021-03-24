@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Pop Quiz</title>
+		<script>
+			function dateSelect(bID){
+				bID = bID;
+				console.log(bID);
+
+				var text = '';
+				var images = [
+				'image.jpg',
+				'image.jpg',
+				'image.jpg',
+				'image.jpg'];
+
+				switch(bID) {
+					case 0:
+						text = "wow. great date";
+						break;
+					case 1:
+						text = "good start";
+						break;					
+					case 2:
+						text = "nice";
+						break;
+					case 3:
+						text = "not too much work";
+						break;
+					default: "classic"
+
+				}
+				document.getElementByID("answers").innerHTML = text;
+				document.getElementByID("pics").src = images[bID];
+			}
+
+		</script>
+	</head>
+
+	<body>
+		<div>welcome to quiz</div>
+		<br>
+		<button onclick="dateSelect(0)">date 1</button>
+		<br>
+		<button onclick="dateSelect(1)">date 2</button>
+		<br>
+		<button onclick="dateSelect(2)">date 3</button>
+		<br>
+		<button onclick="dateSelect(3)">date 4</button>
+		<br>
+		
+		<div id="results">
+			<h3>results</h3>
+			<p id="clicked"></p>
+			<p id="answers"></p>
+			<img id="pics" src(unkown)>
+		</div>
+
+	</body>
+
+</html>
