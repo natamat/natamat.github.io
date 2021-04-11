@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>cocktail database</title>
+	</head>
+	<body>
+		<div id="myData"></div>
+		<script type="text/javascript">
+
+			//var drink1 = new createDrinkInfo('marg', 'small', 'this is what u do');
+			//console.log(drink1);
+			//jsonDrink = JSON.stringify(drinkInfo);
+			//console.log(jsonDrink.drink);
+
+			//jsDrink = JSON.parse(jsonDrink);
+			//console.log(jsDrink.drink);
+			var drinkInfo = {
+				drink: '',
+				glass: '',
+				instructions: '',
+			}
+
+
+/*			drink = data.strDrink;
+			glass = data.strGlass;
+			instructions = data.strInstructions;*/
+
+			function createDrinkInfo(drink, glass, instructions){
+				this.drink = drink,
+				this.glass = glass,
+				this.instructions = instructions,
+				this.drinkName = function(){
+					console.log("the drinks name is " + this.drink)
+				}
+			}
+
+			fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a')
+				.then(function (response){
+					return response.json();
+				}) 
+				.then(function (data) {
+					appendData(data);
+					console.log(data.drinks)
+					//var obj = JSON.parse(data);
+					//console.log(obj);
+				})
+				.catch(function (err) {
+					console.log(err);
+				});
+
+			function appendData(data) {
+				var mainContainer = document.getElementById("myData");
+				for (var i = 0; i < data.drinks.length; i++){
+
+					var div = new createDrinkInfo('data[i].strDrink', 'data[i].strGlass','data[i].strInstructions' )
+					var div = document.createElement("div");
+					div.innerHTML = 'Drink: ' + data.drinks[i].strDrink + ' Instructions: ' + data.drinks[i].strInstructions;
+					mainContainer.appendChild(div);
+				}
+
+
+			}
+
+		</script>
+	</body>
+</html>
