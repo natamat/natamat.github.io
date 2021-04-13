@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>cocktail database</title>
+	</head>
+	<body>
+
+		<div id="myDrinks"></div>
+		<script type="text/javascript">
+
+
+			var drinkInfo = {
+				drink: '',
+				glass: '',
+				instructions: '',
+			}
+
+
+/*			drink = data.strDrink;
+			glass = data.strGlass;
+			instructions = data.strInstructions;*/
+
+			function createDrinkInfo(drink, glass, instructions){
+				this.drink = drink,
+				this.glass = glass,
+				this.instructions = instructions,
+				this.drinkName = function(){
+					console.log("the drinks name is " + this.drink)
+				}
+			}
+
+			fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a')
+				.then(function (response){
+					return response.json();
+				}) 
+				.then(function (data) {
+					appendData(data);
+					console.log(data.drinks)
+				})
+				.catch(function (err) {
+					console.log(err);
+				});
+
+			function appendData(data) {
+				var mainContainer = document.getElementById("myDrinks");
+				for (var i = 0; i < data.drinks.length; i++){
+					var div = new createDrinkInfo(data.drinks[i].strDrink, data.drinks[i].strGlass, data.drinks[i].strInstructions);
+					console.log(div);
+				}
+
+
+			}
+
+		</script>
+	</body>
+</html>
